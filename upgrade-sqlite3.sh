@@ -6,6 +6,7 @@ echo ""
 echo "This script will upgrade sqlite3 to a new version (3.35 2021)."
 echo "The current version:"
 sqlite3 -version
+echo ""
 
 read -s -n1 -p "Press any key to continue..." 
 
@@ -23,5 +24,6 @@ echo "/usr/local/lib" > /etc/ld.so.conf.d/sqlite3.conf
 ldconfig
 
 echo ""
-echo "The new version:"
+echo "The sqlite3 upgrade is done!"
+echo "Ihe new version:"
 sqlite3 -version
