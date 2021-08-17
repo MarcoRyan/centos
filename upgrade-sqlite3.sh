@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 echo ""
 echo "This script will upgrade sqlite3 to a new version (3.35 2021)."
 echo "The current version:"
