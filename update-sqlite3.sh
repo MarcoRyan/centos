@@ -1,11 +1,14 @@
 #!/bin/bash
 
+echo ""
 
 echo "Sqlite3 will be updated to a new version."
 echo "Current Version："
 sqlite3 -version
 
-pause
+echo ""
+
+read -s -n1 -p "Press any key to continue..." ;
 
 yum install -y gcc
 wget https://www.sqlite.org/2021/sqlite-autoconf-3350500.tar.gz
