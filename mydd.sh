@@ -201,6 +201,10 @@ function Start() {
 
   echo -e "\nCMIRROR:"
   echo "$CMIRROR"
+  echo -e "\nDMIRROR:"
+  echo "$DMIRROR"
+  echo -e "\nNETSTR:"
+  echo "$NETSTR"
 
   echo -e "\nPlease select an OS:"
   echo "   1) CentOS 7.9 (DD)"
