@@ -157,7 +157,7 @@ function Start() {
   UMIRROR=''
   SYSMIRROR1='http://sj.pyabc.net/repo/dd/CentOS-79.img.gz'
   SYSMIRROR2='http://sj.pyabc.net/repo/dd/CentOS-76.img.gz'
-  
+  SYSMIRROR3='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/CentOS_8.X_NetInstallation.vhd.gz'
   SYSMIRROR12='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2019_DataCenter_CN_v5.1.vhd.gz'
   SYSMIRROR13='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2016_DataCenter_CN_v4.12.vhd.gz'
   SYSMIRROR14='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2012R2_DataCenter_CN_v4.29.vhd.gz'
@@ -181,7 +181,7 @@ function Start() {
     UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
     SYSMIRROR1='http://sj.pyabc.net/repo/dd/CentOS-79.img.gz'
     SYSMIRROR2='http://sj.pyabc.net/repo/dd/CentOS-76.img.gz'
-    
+    SYSMIRROR3='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/CentOS_8.X_NetInstallation.vhd.gz'
     SYSMIRROR12='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2019_DataCenter_CN_v5.1.vhd.gz'
     SYSMIRROR13='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2016_DataCenter_CN_v4.12.vhd.gz'
     SYSMIRROR14='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2012R2_DataCenter_CN_v4.29.vhd.gz'
@@ -209,7 +209,7 @@ function Start() {
   echo -e "\nPlease select an OS:"
   echo "   1) CentOS 7.9 (DD)"
   echo "   2) CentOS 7.6 (DD)"
-  echo "   3) CentOS 8 (NETINSTALLATION)"
+  echo "   3) CentOS 8 (DD)"
   echo "   4) CentOS 6 (NETINSTALLATION)"
   echo "   5) Debian 10"
   echo "   6) Debian 9"
@@ -237,9 +237,9 @@ function Start() {
   echo -ne "\nYour option: "
   read N
   case $N in
-    1) echo -e "\nPassword: Pwd@CentOS\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh $NETSTR -dd $SYSMIRROR1 $CMIRROR ;;
+    1) echo -e "\nPassword: Pwd@CentOS\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh $NETSTR -dd $SYSMIRROR1 $DMIRROR ;;
     2) echo -e "\nPassword: cxthhhhh.com\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh $NETSTR -dd $SYSMIRROR2 $DMIRROR ;;
-    3) echo -e "\nPassword: hityne.com\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 8 -v 64 -a $NETSTR $CMIRROR ;;
+    3) echo -e "\nPassword: cxthhhhh.com\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh $NETSTR -dd $SYSMIRROR3 $DMIRROR ;;
     4) echo -e "\nPassword: Minijer.com\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -c 6.10 -v 64 -a $NETSTR $CMIRROR ;;
     5) echo -e "\nPassword: Minijer.com\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 10 -v 64 -a $NETSTR $DMIRROR ;;
     6) echo -e "\nPassword: Minijer.com\n"; read -s -n1 -p "Press any key to continue..." ; bash /tmp/Core_Install.sh -d 9 -v 64 -a $NETSTR $DMIRROR ;;
