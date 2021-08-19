@@ -26,7 +26,7 @@ function install_bbr() {
 		echo -e "${GREEN} BBR 已经启用啦...无需再安装${RES}"
 		echo
 	else
-		[[ ! $enable_bbr ]] && wget --no-check-certificate -O /opt/bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh && chmod 755 /opt/bbr.sh && /opt/bbr.sh)
+		[[ ! $enable_bbr ]] && wget --no-check-certificate -O /opt/bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh && chmod 755 /opt/bbr.sh && /opt/bbr.sh
 	fi
 }
 
