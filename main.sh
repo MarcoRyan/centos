@@ -8,6 +8,19 @@ function GetIp() {
   NETMASK="$(( (value >> 24) & 0xff )).$(( (value >> 16) & 0xff )).$(( (value >> 8) & 0xff )).$(( value & 0xff ))"
   URIP=$(curl -s https://ipinfo.io/ip)
 }
+function install_bbr() {
+	local test1=$(sed -n '/net.ipv4.tcp_congestion_control/p' /etc/sysctl.conf)
+	local test2=$(sed -n '/net.core.default_qdisc/p' /etc/sysctl.conf)
+	if [[ $test1 == "net.ipv4.tcp_congestion_control = bbr" && $test2 == "net.core.default_qdisc = fq" ]]; then
+		echo
+		echo -e "$green BBR 已经启用啦...无需再安装$none"
+		echo
+	else
+		_load bbr.sh
+		_try_enable_bbr
+		[[ ! $enable_bbr ]] && bash <(curl -s -L https://github.com/teddysun/across/raw/master/bbr.sh)
+	fi
+}
 
 clear
 echo "==========================================================================="
@@ -18,7 +31,7 @@ echo -e "  ${YELLOW}1.Install v2ray${RES}                               ${YELLOW
 echo ""
 echo -e "  ${YELLOW}3.Check config.json${RES}                           ${YELLOW}4.Modify userid${RES}"
 echo ""
-echo -e "  ${YELLOW}5.Download mydd.sh${RES}                            ${YELLOW}6.PASS${RES}"
+echo -e "  ${YELLOW}5.Download mydd.sh${RES}                            ${YELLOW}6.Instll bbr${RES}"
 echo ""
 echo -e "  ${YELLOW}7.Install 7zip${RES}                                ${YELLOW}8.PASS${RES}"
 echo ""
@@ -48,8 +61,7 @@ elif [ "$main_no" = "5" ]; then
 wget http://www.urlab.xyz/down/bb/bbmail.sh
 chmod +x bbmail.sh
 elif [ "$main_no" = "6" ]; then
-wget http://www.urlab.xyz/down/bb/bbmds.sh
-chmod +x bbmds.sh
+install_bbr
 elif [ "$main_no" = "7" ]; then
 wget http://www.urlab.xyz/down/7zip/7zip.sh
 chmod +x 7zip.sh
