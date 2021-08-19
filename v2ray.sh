@@ -51,7 +51,7 @@ echo "伪装域名："
 echo "伪装路径："
 echo "底层传输协议："
 
-if [ "$main_no" = "4" ]; then
+elif [ "$main_no" = "4" ]; then
 vim /usr/local/etc/v2ray/config.json
 
 else
