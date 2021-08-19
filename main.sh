@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# 定义颜色变量, 还记得吧, \033、\e和\E是等价的
+RED='\E[1;31m'       # 红
+GREEN='\E[1;32m'    # 绿
+YELLOW='\E[1;33m'    # 黄
+BLUE='\E[1;34m'     # 蓝
+PINK='\E[1;35m'     # 粉红
+RES='\E[0m'          # 清除颜色
 
-
-[[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}" && exit 1
+[[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${YELLO}root ${RES}用户运行 ${RED}~(^_^) ${RES}" && exit 1
 
 function GetIp() {
   MAINIP=$(ip route get 1 | awk -F 'src ' '{print $2}' | awk '{print $1}')
@@ -17,11 +23,9 @@ function install_bbr() {
 	local test2=$(sed -n '/net.core.default_qdisc/p' /etc/sysctl.conf)
 	if [[ $test1 == "net.ipv4.tcp_congestion_control = bbr" && $test2 == "net.core.default_qdisc = fq" ]]; then
 		echo
-		echo -e "$green BBR 已经启用啦...无需再安装$none"
+		echo -e "${GREEN} BBR 已经启用啦...无需再安装${RES}"
 		echo
 	else
-		_load bbr.sh
-		_try_enable_bbr
 		[[ ! $enable_bbr ]] && wget --no-check-certificate -O /opt/bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh && chmod 755 /opt/bbr.sh && /opt/bbr.sh)
 	fi
 }
