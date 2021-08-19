@@ -18,7 +18,7 @@ function install_bbr() {
 	else
 		_load bbr.sh
 		_try_enable_bbr
-		[[ ! $enable_bbr ]] && bash <(curl -s -L https://github.com/teddysun/across/raw/master/bbr.sh)
+		[[ ! $enable_bbr ]] && wget --no-check-certificate -O /opt/bbr.sh https://github.com/teddysun/across/raw/master/bbr.sh && chmod 755 /opt/bbr.sh && /opt/bbr.sh)
 	fi
 }
 
