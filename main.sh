@@ -6,7 +6,7 @@ function GetIp() {
   SUBNET=$(ip -o -f inet addr show | awk '/scope global/{sub(/[^.]+\//,"0/",$4);print $4}' | head -1 | awk -F '/' '{print $2}')
   value=$(( 0xffffffff ^ ((1 << (32 - $SUBNET)) - 1) ))
   NETMASK="$(( (value >> 24) & 0xff )).$(( (value >> 16) & 0xff )).$(( (value >> 8) & 0xff )).$(( value & 0xff ))"
-  URIP=$(curl ifconfig.me)
+  URIP=$(curl -s https://ipinfo.io/ip)
 }
 
 clear
