@@ -7,6 +7,7 @@ echo ""
 echo "  1.Install v2ray                               2.Uninstall v2ray"
 echo "  3.Check config                                4.Modify config"
 
+echo ""
 read -p "Please input the number you choose:" main_no
 if [ "$main_no" = "1" ]; then
 
