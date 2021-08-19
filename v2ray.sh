@@ -21,7 +21,7 @@ userid=$(cat /proc/sys/kernel/random/uuid)
 sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
 
 read -p "请设置端口号（默认24380）：" port
-[ "$alterid" != "" ] && echo sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
+[ "$port" != "" ] && echo sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
 
 read -p "请输入alterid（默认64）:" alterid
 [ "$alterid" != "" ] && sed -i "10s/64/$alterid" /usr/local/etc/v2ray/config.json
