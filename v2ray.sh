@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 echo ""
 
 #read -s -n1 -p "Press any key to continue..." 
