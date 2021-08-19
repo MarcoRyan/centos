@@ -9,27 +9,12 @@ function GetIp() {
   URIP=$(curl ifconfig.me)
 }
 
-# 定义颜色变量, 还记得吧, \033、\e和\E是等价的
-RED='\E[1;31m'       # 红
-GREEN='\E[1;32m'    # 绿
-YELLOW='\E[1;33m'    # 黄
-BLUE='\E[1;34m'     # 蓝
-PINK='\E[1;35m'     # 粉红
-RES='\E[0m'          # 清除颜色
- 
- 
-# 真正使用时, 我们通过echo -e来调用
-echo -e  "${RED}Red color${RES}"
-echo -e  "${YELLOW}Yelow color${RES}"
-echo -e  "${BLUE}Blue color${RES}"
-echo -e  "${GREEN}Green color${RES}"
-echo -e  "${PINK}Pink color${RES}"
-
+clear
 echo "==========================================================================="
 echo "Main page:"
 echo "Your IP: $URIP"
 echo ""
-echo -e "  ${YELLOW}1.Install v2ray${RES}                              ${YELLOW}2.Uninstall v2ray${RES}"
+echo -e "  ${YELLOW}1.Install v2ray${RES}                               ${YELLOW}2.Uninstall v2ray${RES}"
 echo ""
 echo -e "  ${YELLOW}3.Check config.json${RES}                           ${YELLOW}4.Modify userid${RES}"
 echo ""
