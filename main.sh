@@ -39,7 +39,7 @@ echo -e "  ${YELLOW}1.Install v2ray${RES}                               ${YELLOW
 echo ""
 echo -e "  ${YELLOW}3.Check config.json${RES}                           ${YELLOW}4.Modify userid${RES}"
 echo ""
-echo -e "  ${YELLOW}5.Download mydd.sh${RES}                            ${YELLOW}6.Instll bbr${RES}"
+echo -e "  ${YELLOW}5.DD system${RES}                                   ${YELLOW}6.Install bbr${RES}"
 echo ""
 echo -e "  ${YELLOW}7.Install 7zip${RES}                                ${YELLOW}8.PASS${RES}"
 echo ""
@@ -66,8 +66,7 @@ elif [ "$main_no" = "4" ]; then
 wget http://www.urlab.xyz/down/java/ibm_java.sh
 chmod +x ibm_java.sh
 elif [ "$main_no" = "5" ]; then
-wget http://www.urlab.xyz/down/bb/bbmail.sh
-chmod +x bbmail.sh
+wget https://github.com/hityne/centos/raw/main/mydd.sh && chmod +x mydd.sh && bash mydd.sh
 elif [ "$main_no" = "6" ]; then
 install_bbr
 elif [ "$main_no" = "7" ]; then
