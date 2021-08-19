@@ -12,7 +12,7 @@ function GetIp() {
 # 定义颜色变量, 还记得吧, \033、\e和\E是等价的
 RED='\E[1;31m'       # 红
 GREEN='\E[1;32m'    # 绿
-YELOW='\E[1;33m'    # 黄
+YELLOW='\E[1;33m'    # 黄
 BLUE='\E[1;34m'     # 蓝
 PINK='\E[1;35m'     # 粉红
 RES='\E[0m'          # 清除颜色
@@ -29,7 +29,7 @@ echo "==========================================================================
 echo "Main page:"
 echo "Your IP: $URIP"
 echo ""
-echo "  ${YELLOW}1.Install v2ray${RES}                              2.Uninstall v2ray"
+echo "  ${YELLOW}1.Install v2ray${RES}                              ${YELLOW}2.Uninstall v2ray${RES}"
 echo ""
 echo "  3.Check config.json                           4.Modify userid"
 echo ""
