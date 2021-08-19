@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+
+[[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}" && exit 1
+
 function GetIp() {
   MAINIP=$(ip route get 1 | awk -F 'src ' '{print $2}' | awk '{print $1}')
   GATEWAYIP=$(ip route | grep default | awk '{print $3}')
