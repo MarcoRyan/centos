@@ -25,12 +25,11 @@ echo -e  "${BLUE}Blue color${RES}"
 echo -e  "${GREEN}Green color${RES}"
 echo -e  "${PINK}Pink color${RES}"
 
-clear
 echo "==========================================================================="
 echo "Main page:"
 echo "Your IP: $URIP"
 echo ""
-echo "  ${YELLOW}1.Install v2ray${                               2.Uninstall v2ray"
+echo "  ${YELLOW}1.Install v2ray${RES}                              2.Uninstall v2ray"
 echo ""
 echo "  3.Check config.json                           4.Modify userid"
 echo ""
