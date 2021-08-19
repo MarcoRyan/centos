@@ -29,7 +29,7 @@ echo "==========================================================================
 echo "Main page:"
 echo "Your IP: $URIP"
 echo ""
-echo "  ${YELLOW}1.Install v2ray${RES}                              ${YELLOW}2.Uninstall v2ray${RES}"
+echo -e "  ${YELLOW}1.Install v2ray${RES}                              ${YELLOW}2.Uninstall v2ray${RES}"
 echo ""
 echo "  3.Check config.json                           4.Modify userid"
 echo ""
