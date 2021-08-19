@@ -34,7 +34,7 @@ elif [ "$main_no" = "2" ]; then
 bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh) --remove
 
 elif [ "$main_no" = "3" ]; then
-cat /usr/loca/etc/v2ray/config.json
+cat /usr/local/etc/v2ray/config.json
 
 else
 exit 0
