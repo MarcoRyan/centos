@@ -23,7 +23,6 @@ function check_config(){
 	echo "伪装路径："
 	echo "底层传输协议："
 
-
 	cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
 				{
 					"v": "2",
@@ -38,10 +37,11 @@ function check_config(){
 					"path": "",
 					"tls": ""
 				} 
-	EOF
+EOF
 
 	vmess="vmess://$(cat /usr/local/etc/v2ray/vmess_qr.json | base64 -w 0)"
 	echo $vmess
+	echo ""
 
 }
 
@@ -93,27 +93,32 @@ elif [ "$main_no" = "4" ]; then
 	if [ "$sub_no" = "1" ]; then
 
 		old_port=$(awk 'NR==3 {print $2}' /usr/local/etc/v2ray/config.json)
-		old_port=${port:0:-1}
+		old_port=${old_port:0:-1}
 		echo "原端口：$old_port"
 
 		read -p "请设置端口号（默认24380）：" port
 		[ "$port" != "" ] && sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
 
+		service v2ray stop
+		service v2ray start
+
 		new_port=$(awk 'NR==3 {print $2}' /usr/local/etc/v2ray/config.json)
-		new_port=${port:0:-1}
-		echo "原端口：$port"
+		new_port=${new_port:0:-1}
+		echo "新端口：$port"
 
 	elif [ "$sub_no" = "2" ]; then
 		old_userid=$(awk 'NR==8 {print$2}' /usr/local/etc/v2ray/config.json)
-		old_userid=${userid:1:-2}
-		echo "用户id: $old_userid"
+		old_userid=${old_userid:1:-2}
+		echo -e "用户id: $old_userid\n"
 
 		read -s -n1 -p "Press Enter to continue or press Ctrl+C to quit"
 		userid=$(cat /proc/sys/kernel/random/uuid)
-		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
+		sed -i "s/$old_userid/$userid/" /usr/local/etc/v2ray/config.json
+		service v2ray stop
+		service v2ray start
 		new_userid=$(awk 'NR==8 {print$2}' /usr/local/etc/v2ray/config.json)
-		new_userid=${userid:1:-2}
-		echo "用户id: $new_userid"
+		new_userid=${new_userid:1:-2}
+		echo -e "\n用户id: $new_userid"
 	else
 	exit 0
 	fi
