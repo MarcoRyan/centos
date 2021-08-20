@@ -37,7 +37,6 @@ echo "==========================================================================
 echo -e "${RED}Main page:${RES}"
 echo -e "${GREEN}Your IP: $URIP${RES}"
 echo ""
-echo ""
 echo -e "  ${YELLOW}1.DD system${RES}                                   ${YELLOW}2.Install bbr${RES}"
 echo ""
 echo -e "  ${YELLOW}3.${RES}                                            ${YELLOW}4.Install v2ray${RES}"
@@ -48,7 +47,7 @@ echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW
 echo ""
 echo -e "  ${YELLOW}9.Set localtime to China zone${RES}                 ${YELLOW}0.VPS info${RES}"
 echo ""
-echo -e "${YELLOW}Written by URLab.xyz, updated on 2021/08/20${RES}"
+echo -e "${RED}Written by Richard, updated on 2021/08/20${RES}"
 echo "==========================================================================="
 
 echo ""
