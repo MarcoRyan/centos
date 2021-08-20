@@ -39,11 +39,11 @@ echo -e "${GREEN}Your IP: $URIP${RES}"
 echo ""
 echo -e "  ${YELLOW}1.DD system${RES}                                   ${YELLOW}2.Install bbr${RES}"
 echo ""
-echo -e "  ${YELLOW}3.${RES}                                            ${YELLOW}4.Install v2ray${RES}"
+echo -e "  ${YELLOW}3.Install bt Panel${RES}                            ${YELLOW}4.Install v2ray${RES}"
 echo ""
 echo -e "  ${YELLOW}5.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW}6.Install vim and bc${RES}"
 echo ""
-echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW}8.${RES}" 
+echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW}8.Upgrade sqlite3${RES}" 
 echo ""
 echo -e "  ${YELLOW}9.Set localtime to China zone${RES}                 ${YELLOW}0.VPS info${RES}"
 echo ""
@@ -58,7 +58,7 @@ if [ "$main_no" = "1" ]; then
 elif [ "$main_no" = "2" ]; then
 	install_bbr
 elif [ "$main_no" = "3" ]; then
-	echo "正在建设中"
+	yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
 elif [ "$main_no" = "4" ]; then
 	wget http://www.urlab.xyz/down/pptp.sh
 	chmod +x pptp.sh
@@ -86,7 +86,8 @@ elif [ "$main_no" = "7" ]; then
 	echo "screen -r xxx    #recall the screen named xxx"
 	echo "exit             #shut off the current screen session"
 elif [ "$main_no" = "8" ]; then
-	echo "正在建设中"
+	wget https://github.com/hityne/centos/raw/main/upgrade-sqlite3.sh && chmod a+x upgrade-sqlite3.sh && bash upgrade-sqlite3.sh
+	
 elif [ "$main_no" = "9" ]; then
 	rm -rf /etc/localtime
 	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
