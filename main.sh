@@ -54,14 +54,13 @@ echo ""
 read -p "Please input the number you choose: " main_no
 
 if [ "$main_no" = "1" ]; then
-	wget https://github.com/hityne/centos/raw/main/mydd.sh && chmod +x mydd.sh && bash mydd.sh
+	wget https://github.com/hityne/centos/raw/main/mydd.sh && chmod a+x mydd.sh && bash mydd.sh
 elif [ "$main_no" = "2" ]; then
 	install_bbr
 elif [ "$main_no" = "3" ]; then
 	yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
 elif [ "$main_no" = "4" ]; then
-	wget http://www.urlab.xyz/down/pptp.sh
-	chmod +x pptp.sh
+	wget https://raw.githubusercontent.com/hityne/centos/ur/v2ray.sh && chmod a+x v2ray.sh && bash v2ray.sh
 elif [ "$main_no" = "5" ]; then
 	echo ""
 	echo "Please input the ssh port you want to use"
@@ -113,6 +112,7 @@ elif [ "$main_no" = "0" ]; then
 	info_free=$(free -m)
 	echo $info_free | awk '{print $7 "\t"$9"/" $8}'
 	echo $info_free | awk '{print $14 "\t"$16"/" $15}'
+	echo ""
 	echo -e "${BLUE}[8]硬盘信息：${RES}"
 	df -h
 	echo ""
