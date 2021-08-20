@@ -115,7 +115,10 @@ elif [ "$main_no" = "0" ]; then
 	echo -e "${BLUE}[8]硬盘信息：${RES}"
 	df -h
 	echo ""
-	echo -e "${BLUE}[9]上次登录信息：${RES}"
+	echo -e "${BLUE}[9]防火墙状态：${RES}"
+	firewall-cmd --state
+	echo ""
+	echo -e "${BLUE}[10]上次登录信息：${RES}"
 	last | awk 'NR==2'
 	echo ""
 else
