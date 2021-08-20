@@ -8,7 +8,7 @@ BLUE='\E[1;34m'     # 蓝
 PINK='\E[1;35m'     # 粉红
 RES='\E[0m'          # 清除颜色
 
-[[ $(id -u) != 0 ]] && echo -e " 哎呀……请使用 ${YELLO}root ${RES}用户运行 ${RED}~(^_^) ${RES}" && exit 1
+[[ $(id -u) != 0 ]] && echo -e " 请使用 ${YELLOW}root ${RES}用户运行 ${RED}~(^_^) ${RES}" && exit 1
 
 function GetIp() {
   MAINIP=$(ip route get 1 | awk -F 'src ' '{print $2}' | awk '{print $1}')
@@ -30,110 +30,95 @@ function install_bbr() {
 	fi
 }
 
+GetIp
+
 clear
 echo "==========================================================================="
-echo "Main page:"
-echo "Your IP: $URIP"
+echo -e "${RED}Main page:${RES}"
+echo -e "${GREEN}Your IP: $URIP${RES}"
 echo ""
-echo -e "  ${YELLOW}1.Install v2ray${RES}                               ${YELLOW}2.Uninstall v2ray${RES}"
 echo ""
-echo -e "  ${YELLOW}3.Check config.json${RES}                           ${YELLOW}4.Modify userid${RES}"
+echo -e "  ${YELLOW}1.DD system${RES}                                   ${YELLOW}2.Install bbr${RES}"
 echo ""
-echo -e "  ${YELLOW}5.DD system${RES}                                   ${YELLOW}6.Install bbr${RES}"
+echo -e "  ${YELLOW}3.${RES}                                            ${YELLOW}4.Install v2ray${RES}"
 echo ""
-echo -e "  ${YELLOW}7.Install 7zip${RES}                                ${YELLOW}8.PASS${RES}"
+echo -e "  ${YELLOW}5.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW}6.Install vim and bc${RES}"
 echo ""
-echo -e "  ${YELLOW}9.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW}a.Install vim and bc${RES}"
+echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW}8.${RES}" 
 echo ""
-echo -e "  ${YELLOW}b.Install screen${RES}                              ${YELLOW}c.Install msmtp${RES}"
+echo -e "  ${YELLOW}9.Set localtime to China zone${RES}                 ${YELLOW}0.VPS info${RES}"
 echo ""
-echo -e "  ${YELLOW}d.Set localtime to China zone${RES}                 ${YELLOW}e.Install xfce and vnc${RES}"
-echo ""
-echo "Written by URLab.xyz, updated on 2021/08/19"
+echo -e "${YELLOW}Written by URLab.xyz, updated on 2021/08/20${RES}"
 echo "==========================================================================="
 
+echo ""
+read -p "Please input the number you choose: " main_no
 
-read -p "Please input the number you choose:" main_no
 if [ "$main_no" = "1" ]; then
-wget http://www.urlab.xyz/down/oolnmp.tar.gz
+	wget https://github.com/hityne/centos/raw/main/mydd.sh && chmod +x mydd.sh && bash mydd.sh
 elif [ "$main_no" = "2" ]; then
-wget http://www.urlab.xyz/down/openvpn/openvpn.sh
-chmod +x openvpn.sh
+	install_bbr
 elif [ "$main_no" = "3" ]; then
-wget http://www.urlab.xyz/down/transmission/transmission.sh
-chmod +x transmission.sh
+	echo "正在建设中"
 elif [ "$main_no" = "4" ]; then
-wget http://www.urlab.xyz/down/java/ibm_java.sh
-chmod +x ibm_java.sh
+	wget http://www.urlab.xyz/down/pptp.sh
+	chmod +x pptp.sh
 elif [ "$main_no" = "5" ]; then
-wget https://github.com/hityne/centos/raw/main/mydd.sh && chmod +x mydd.sh && bash mydd.sh
+	echo ""
+	echo "Please input the ssh port you want to use"
+	read -p "Please input the port you select for SSH login: " ssh_port
+	echo "=========================================="
+	echo SSH port="$ssh_port"
+	echo "==========================================="
+	echo ""
+	#Break here
+	read -n 1 -p "Press any key to continue..."
+	sed -i 's/#Port 22/Port '$ssh_port'/g' /etc/ssh/sshd_config
+	service sshd restart
+	echo""
+	echo "Service sshd has been restarted. Please use the new SSH port to login."
 elif [ "$main_no" = "6" ]; then
-install_bbr
+	yum -y install vim-enhanced
+	yum -y install bc
 elif [ "$main_no" = "7" ]; then
-wget http://www.urlab.xyz/down/7zip/7zip.sh
-chmod +x 7zip.sh
+	yum -y install screen
+	echo ""
+	echo "screen -S xxx    #creat a new screen named xxx"
+	echo "screen -r xxx    #recall the screen named xxx"
+	echo "exit             #shut off the current screen session"
 elif [ "$main_no" = "8" ]; then
-wget http://www.urlab.xyz/down/pptp.sh
-chmod +x pptp.sh
+	echo "正在建设中"
 elif [ "$main_no" = "9" ]; then
-echo ""
-echo "Please input the ssh port you want to use"
-read -p "Please input the port you select for SSH login: " ssh_port
-echo "=========================================="
-echo SSH port="$ssh_port"
-echo "==========================================="
-echo ""
-#Break here
-read -n 1 -p "Press any key to continue..."
-sed -i 's/#Port 22/Port '$ssh_port'/g' /etc/ssh/sshd_config
-service sshd restart
-echo""
-echo "Service sshd has been restarted. Please use the new SSH port to login."
-elif [ "$main_no" = "a" ]; then
-yum -y install vim-enhanced
-yum -y install bc
-elif [ "$main_no" = "b" ]; then
-yum -y install screen
-echo ""
-echo "screen -S xxx    #creat a new screen named xxx"
-echo "screen -r xxx    #recall the screen named xxx"
-echo "exit             #shut off the current screen session"
-elif [ "$main_no" = "c" ]; then
-wget http://sourceforge.net/projects/msmtp/files/msmtp/1.4.25/msmtp-1.4.25.tar.bz2/download
-tar xjvf msmtp-1.4.25.tar.gz2
-cd msmtp*
-./configure
-make
-make install
-echo "......................................................"
-echo "msmstp is installed in /usr/local/bin defaultly."
-echo "Please modify .muttrc and .msmtprc"
-echo "......................................................"
-elif [ "$main_no" = "d" ]; then
-rm -rf /etc/localtime
-ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-date
-elif [ "$main_no" = "e" ]; then
-echo ""
-echo "this script will install the destktop xfce4.4 and vncserver to your vps with centos 5"
-read -n 1 -p "Press any key to continue..."
-yum -y groupinstall xfce-4.4
-yum -y install vnc vnc-server
-cat >>/etc/sysconfg/vncservers <<EOF
-VNCSERVERS="1:root"
-VNCSERVERARGS[1]="-geometry 800x600"
-EOF
-vncpasswd
-vncserver
-cat >/root/.vnc/xstartup <<EOF
-#!/bin/sh
-/usr/bin/startxfce4
-EOF
-chmod +x ~/.vnc/xstartup
-service vncserver restart
-echo ""
-echo " if needed, run 'chkconfig vncserver on' to set VNC starting up automatically"
-
+	rm -rf /etc/localtime
+	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	date -R
+elif [ "$main_no" = "0" ]; then
+	echo ""
+	echo -e "${BLUE}[1]系统版本号：${RES}"
+	cat /etc/redhat-release
+	echo ""
+	echo -e "${BLUE}[2]系统内核：${RES}"
+	uname -r
+	echo ""
+	echo -e "${BLUE}[3]查看BBR是否启动：${RES}"
+	sysctl net.ipv4.tcp_congestion_control
+	echo ""
+	echo -e "${BLUE}[4]上次启动时间：${RES}"
+	date -d "$(awk -F. '{print $1}' /proc/uptime) second ago" +"%Y-%m-%d %H:%M:%S"
+	echo ""
+	echo -e "${BLUE}[5]系统运行时间：${RES}"
+	cat /proc/uptime| awk -F. '{run_days=$1 / 86400;run_hour=($1 % 86400)/3600;run_minute=($1 % 3600)/60;run_second=$1 % 60;printf("%d天%d时%d分%d秒\n",run_days,run_hour,run_minute,run_second)}'
+	echo ""
+	echo -e "${BLUE}[7]内存信息：${RES}"
+	info_free=$(free -m)
+	echo $info_free | awk '{print $7 "\t"$9"/" $8}'
+	echo $info_free | awk '{print $14 "\t"$16"/" $15}'
+	echo -e "${BLUE}[8]硬盘信息：${RES}"
+	df -h
+	echo ""
+	echo -e "${BLUE}[9]上次登录信息：${RES}"
+	last | awk 'NR==2'
+	echo ""
 else
 exit 0
 
