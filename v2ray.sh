@@ -88,7 +88,7 @@ EOF
 		[ "$alterid" != "" ] && sed -i "11s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
 		read -p "请输入path（默认"down"）:" urpath
-		[ "$urpath" != "" ] && sed -i "11s/down/$urpath/" /usr/local/etc/v2ray/config.json
+		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
 		urpath="/"$urpath
 
 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
