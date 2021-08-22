@@ -82,13 +82,14 @@ EOF
 		sed -i "9s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
 
 		read -p "请设置端口号（默认35367）：" port
-		[ "$port" != "" ] && sed -i "4s/24380/$port/" /usr/local/etc/v2ray/config.json
+		[ "$port" != "" ] && sed -i "4s/35367/$port/" /usr/local/etc/v2ray/config.json
 
 		read -p "请输入alterid（默认64）:" alterid
 		[ "$alterid" != "" ] && sed -i "11s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
-		read -p "请输入path（默认"/down"）:" urpath
-		[ "$alterid" != "" ] && sed -i "11s/\/down/$urpath/" /usr/local/etc/v2ray/config.json
+		read -p "请输入path（默认"down"）:" urpath
+		[ "$urpath" != "" ] && sed -i "11s/down/$urpath/" /usr/local/etc/v2ray/config.json
+		urpath="/"$urpath
 
 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
 				{
