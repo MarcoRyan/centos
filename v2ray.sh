@@ -107,6 +107,16 @@ EOF
 				} 
 EOF
 
+	echo ""
+	echo "*******************"
+	echo "请开通端口$port"
+	echo "请为$urdomain申请SSL认证"
+	wget https://raw.githubusercontent.com/hityne/centos/ur/site.config  -O -> /usr/local/etc/v2ray/site.config
+	echo "网站配置文件添加以下内容(/usr/local/etc/v2ray/site.config)："
+	cat /usr/local/etc/v2ray/site.config
+	echo "*******************"
+	echo ""
+
 	else
 	exit 0
 	fi
@@ -114,6 +124,8 @@ EOF
     systemctl enable v2ray
 	service v2ray start
 	service v2ray status
+
+
 
 
 elif [ "$main_no" = "2" ]; then
