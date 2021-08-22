@@ -94,7 +94,7 @@ EOF
 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
 				{
 					"v": "2",
-					"ps": "o",
+					"ps": "",
 					"add": "$urdomain",
 					"port": "$port",
 					"id": "$userid",
