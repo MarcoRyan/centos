@@ -125,8 +125,12 @@ elif [ "$main_no" = "10" ]; then
 	last | awk 'NR==2'
 	echo ""
 	
-elif [ "$main_no" = "10" ]; then	
+elif [ "$main_no" = "11" ]; then	
 	wget -qO- bench.sh | bash
+
+elif [ "$main_no" = "12" ]; then	
+	wget https://raw.githubusercontent.com/hityne/centos/main/install_python3.sh && chmod +x install_python3.sh && bash install_python3.sh	
+	
 else
 exit 0
 
