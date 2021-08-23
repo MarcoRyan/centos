@@ -45,7 +45,9 @@ echo -e "  ${YELLOW}5.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW
 echo ""
 echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW}8.Upgrade sqlite3${RES}" 
 echo ""
-echo -e "  ${YELLOW}9.Set localtime to China zone${RES}                 ${YELLOW}0.VPS info${RES}"
+echo -e "  ${YELLOW}9.Set localtime to China zone${RES}                 ${YELLOW}10.VPS info${RES}"
+echo ""
+echo -e " ${YELLOW}11.Test speed (bench.sh)${RES}                       ${YELLOW}12.Install python3.9${RES}"
 echo ""
 echo -e "${RED}Written by Richard, updated on 2021/08/20${RES}"
 echo "==========================================================================="
@@ -91,7 +93,7 @@ elif [ "$main_no" = "9" ]; then
 	rm -rf /etc/localtime
 	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 	date -R
-elif [ "$main_no" = "0" ]; then
+elif [ "$main_no" = "10" ]; then
 	echo ""
 	echo -e "${BLUE}[1]系统版本号：${RES}"
 	cat /etc/redhat-release
@@ -122,6 +124,9 @@ elif [ "$main_no" = "0" ]; then
 	echo -e "${BLUE}[10]上次登录信息：${RES}"
 	last | awk 'NR==2'
 	echo ""
+	
+elif [ "$main_no" = "10" ]; then	
+	wget -qO- bench.sh | bash
 else
 exit 0
 
