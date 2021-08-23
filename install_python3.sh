@@ -7,7 +7,7 @@ echo ""
 echo "This script will install python3.9.6 and virtualenv for CentOS7."
 echo "Now checking what versions of python have installed in your system..."
 echo "python -V:"
-pyton -V
+python -V
 echo "python3 -V"
 python3 -V
 
