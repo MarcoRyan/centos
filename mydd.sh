@@ -163,7 +163,7 @@ function Start() {
   SYSMIRROR14='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2012R2_DataCenter_CN_v4.29.vhd.gz'
   SYSMIRROR15='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/WinSrv2012r2x64/lite/winsrv2012r2-data-x64-cn.vhd.gz'
   SYSMIRROR16='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2008R2_DataCenter_CN_v3.27.vhd.gz'
-  SYSMIRROR17='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/WinSrv2008x64/lite/winsrv2008r2-data-sp1-x64-cn.vhd.gz'
+  SYSMIRROR17='http://sj.pyabc.net/repo/dd/win10-ltsc-x64-cn.vhd.gz'
   SYSMIRROR18='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2003_DataCenter_CN_v7.1.vhd.gz'
   SYSMIRROR19='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/WinSrv2003/10G/WinSrv2003x86-Chinese-C10G.vhd.gz'
   SYSMIRROR20='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/Win10/Win10_x64.vhd.gz'
@@ -187,7 +187,7 @@ function Start() {
     SYSMIRROR14='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2012R2_DataCenter_CN_v4.29.vhd.gz'
     SYSMIRROR15='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/WinSrv2012r2x64/lite/winsrv2012r2-data-x64-cn.vhd.gz'
     SYSMIRROR16='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2008R2_DataCenter_CN_v3.27.vhd.gz'
-    SYSMIRROR17='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/WinSrv2008x64/lite/winsrv2008r2-data-sp1-x64-cn.vhd.gz'
+    SYSMIRROR17='http://sj.pyabc.net/repo/dd/win10-ltsc-x64-cn.vhd.gz'
     SYSMIRROR18='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2003_DataCenter_CN_v7.1.vhd.gz'
     SYSMIRROR19='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/WinSrv2003/10G/WinSrv2003x86-Chinese-C10G.vhd.gz'
     SYSMIRROR20='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/Win10/Win10_x64.vhd.gz'
@@ -219,7 +219,7 @@ function Start() {
   echo "  14) Windows Server 2012"
   echo "  15) Windows Server 2012 Lite"
   echo "  16) Windows Server 2008"
-  echo "  17) Windows Server 2008 Lite"
+  echo "  17) Windows 10 Lite (2019)"
   echo "  18) Windows Server 2003"
   echo "  19) Windows Server 2003 Lite"
   echo "  20) Windows 10 LTSC Lite"
