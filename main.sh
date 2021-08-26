@@ -30,19 +30,19 @@ function install_bbr() {
 	fi
 }
 
-# GetIp
+GetIp
 
-ip_info=$(curl ip.gs/json)
-ip_ip=$(echo $ip_info | jq .ip)
-ip_country=$(echo $ip_info | jq .country)
-ip_region=$(echo $ip_info | jq .region_name)
-ip_city=$(echo $ip_info | jq .city)
+# ip_info=$(curl ip.gs/json)
+# ip_ip=$(echo $ip_info | jq .ip)
+# ip_country=$(echo $ip_info | jq .country)
+# ip_region=$(echo $ip_info | jq .region_name)
+# ip_city=$(echo $ip_info | jq .city)
 
 clear
 echo ""
 echo "==========================================================================="
 echo -e "${RED}Main page:${RES}"
-echo -e "${GREEN}Your IP: $ip_ip $ip_country, $ip_region, $ip_city ${RES}"
+echo -e "${GREEN}Your IP: $MAINIP${RES}"
 echo ""
 echo -e "  ${YELLOW}1.DD system${RES}                                   ${YELLOW}2.Install bbr${RES}"
 echo ""
