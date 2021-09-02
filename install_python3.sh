@@ -48,13 +48,17 @@ read -s -n1 -p "Press any key to continue..."
 #为python3安装virtualenv
 pip3 install virtualenv
 
-echo "PATH=\$PATH:/usr/local/python3/bin" >> /etc/profile
+# echo "PATH=\$PATH:/usr/local/python3/bin" >> /etc/profile
 
-#让etc/profile生效
-source /etc/profile
+# #让etc/profile生效
+# source /etc/profile
 
-#检查是否添加成功
-echo $PATH
+# #检查是否添加成功
+# echo $PATH
+
+ln -s /usr/local/python3/bin/virtualenv /usr/bin/virtualenv   #为virtualenv创建软连接
+# #检查是否安装成功
+virtualenv --version
 
 echo ""
 echo "The script runs to end."
