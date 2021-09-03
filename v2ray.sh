@@ -10,6 +10,54 @@ function check_config(){
 
 	cat /usr/local/etc/v2ray/config.json
 
+	rows=$(awk 'END {print NR}' /usr/local/etc/v2ray/config.json )
+	echo $rows
+	if [ $rows == 32 ]; then
+		ip=$(curl -s https://ipinfo.io/ip)
+		port=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==3 {print substr($2,0,length($2)-1)}')
+		userid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==8 {print substr($2,0,length($2)-1)}')
+		alterid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==10 {print $2}')
+
+		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
+				{
+					"v": "2",
+					"ps": "",
+					"add": "$ip",
+					"port": "$port",
+					"id": "$userid",
+					"aid": "$alterid",
+					"net": "tcp",
+					"type": "none",
+					"host": "",
+					"path": "",
+					"tls": ""
+				} 
+EOF
+	elif [ $rows == 47 ]; then
+
+		port=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==4 {print substr($2,0,length($2)-1)}')
+		userid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==9 {print substr($2,0,length($2)-1)}')
+		alterid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==11 {print $2}')
+		urpath=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==18 {print $2}')
+		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
+				{
+					"v": "2",
+					"ps": "",
+					"add": "$urdomain",
+					"port": "443",
+					"id": "$userid",
+					"aid": "$alterid",
+					"net": "ws",
+					"type": "none",
+					"host": "",
+					"path": "$urpath",
+					"tls": "tls"
+				} 
+EOF
+	else
+		exit 0
+	fi
+
 	vmess="vmess://$(cat /usr/local/etc/v2ray/vmess_qr.json | base64 -w 0)"
 	echo $vmess
 	echo ""
@@ -51,23 +99,23 @@ if [ "$main_no" = "1" ]; then
 		read -p "请输入alterid（默认64）:" alterid
 		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
-		ip=$(curl -s https://ipinfo.io/ip)
+# 		ip=$(curl -s https://ipinfo.io/ip)
 
-		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
-				{
-					"v": "2",
-					"ps": "",
-					"add": "$ip",
-					"port": "$port",
-					"id": "$userid",
-					"aid": "$alterid",
-					"net": "tcp",
-					"type": "none",
-					"host": "",
-					"path": "",
-					"tls": ""
-				} 
-EOF
+# 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
+# 				{
+# 					"v": "2",
+# 					"ps": "",
+# 					"add": "$ip",
+# 					"port": "$port",
+# 					"id": "$userid",
+# 					"aid": "$alterid",
+# 					"net": "tcp",
+# 					"type": "none",
+# 					"host": "",
+# 					"path": "",
+# 					"tls": ""
+# 				} 
+# EOF
 
 	elif [ "$v2ray_no" = "2" ]; then
 
@@ -91,21 +139,21 @@ EOF
 		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
 		urpath="/"$urpath
 
-		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
-				{
-					"v": "2",
-					"ps": "",
-					"add": "$urdomain",
-					"port": "$port",
-					"id": "$userid",
-					"aid": "$alterid",
-					"net": "ws",
-					"type": "none",
-					"host": "",
-					"path": "$urpath",
-					"tls": "tls"
-				} 
-EOF
+# 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
+# 				{
+# 					"v": "2",
+# 					"ps": "",
+# 					"add": "$urdomain",
+# 					"port": "443",
+# 					"id": "$userid",
+# 					"aid": "$alterid",
+# 					"net": "ws",
+# 					"type": "none",
+# 					"host": "",
+# 					"path": "$urpath",
+# 					"tls": "tls"
+# 				} 
+# EOF
 
 	echo ""
 	echo "*******************"
