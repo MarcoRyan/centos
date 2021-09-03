@@ -193,19 +193,22 @@ elif [ "$main_no" = "3" ]; then
 	check_config
 
 elif [ "$main_no" = "4" ]; then
-	echo ""
 	rows=$(awk 'END {print NR}' /usr/local/etc/v2ray/config.json )
-	
 	if [ $rows == 32 ]; then
 		echo ""
 		echo "vmess+tcp"
 		echo "If you are not an advanced user, please do not modify itmes other than port and userid."
 		echo 'After you save the configure, restart v2ray service using "service v2ray restart"'
+		echo ""
+		vim /usr/local/etc/v2ray/config.json
+
 	elif [ $rows == 47 ]; then
 		echo ""
 		echo "vmess+ws+tls"
 		echo "If you are not an advanced user, please do not modify itmes other than port and userid."
 		echo 'After you save the configure, restart v2ray service using "service v2ray restart"'
+		echo ""
+		vim /usr/local/etc/v2ray/config.json
 	else
 		exit 0
 	fi
