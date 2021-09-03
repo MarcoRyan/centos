@@ -45,12 +45,12 @@ EOF
 		alterid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==11 {print $2}')
 		urpath=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==18 {print $2}')
 		urdomain=$(cat /usr/local/etc/v2ray/domain.txt)
-		
+
 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
 				{
 					"v": "2",
 					"ps": "",
-					"add": $urdomain,
+					"add": "$urdomain",
 					"port": "443",
 					"id": $userid,
 					"aid": "$alterid",
