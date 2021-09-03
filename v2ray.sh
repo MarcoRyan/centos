@@ -194,41 +194,20 @@ elif [ "$main_no" = "3" ]; then
 
 elif [ "$main_no" = "4" ]; then
 	echo ""
-	echo "  1.Module port                               2.Modify userid"
-	echo ""
-	read -p "Please input the number you choose:" sub_no
-
-	if [ "$sub_no" = "1" ]; then
-
-		old_port=$(awk 'NR==3 {print $2}' /usr/local/etc/v2ray/config.json)
-		old_port=${old_port:0:-1}
-		echo "原端口：$old_port"
-
-		read -p "请设置端口号（默认24380）：" port
-		[ "$port" != "" ] && sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
-
-		service v2ray stop
-		service v2ray start
-
-		new_port=$(awk 'NR==3 {print $2}' /usr/local/etc/v2ray/config.json)
-		new_port=${new_port:0:-1}
-		echo "新端口：$port"
-
-	elif [ "$sub_no" = "2" ]; then
-		old_userid=$(awk 'NR==8 {print$2}' /usr/local/etc/v2ray/config.json)
-		old_userid=${old_userid:1:-2}
-		echo -e "用户id: $old_userid\n"
-
-		read -s -n1 -p "Press Enter to continue or press Ctrl+C to quit"
-		userid=$(cat /proc/sys/kernel/random/uuid)
-		sed -i "s/$old_userid/$userid/" /usr/local/etc/v2ray/config.json
-		service v2ray stop
-		service v2ray start
-		new_userid=$(awk 'NR==8 {print$2}' /usr/local/etc/v2ray/config.json)
-		new_userid=${new_userid:1:-2}
-		echo -e "\n用户id: $new_userid"
+	rows=$(awk 'END {print NR}' /usr/local/etc/v2ray/config.json )
+	
+	if [ $rows == 32 ]; then
+		echo ""
+		echo "vmess+tcp"
+		echo "If you are not an advanced user, please do not modify itmes other than port and userid."
+		echo 'After you save the configure, restart v2ray service using "service v2ray restart"'
+	elif [ $rows == 47 ]; then
+		echo ""
+		echo "vmess+ws+tls"
+		echo "If you are not an advanced user, please do not modify itmes other than port and userid."
+		echo 'After you save the configure, restart v2ray service using "service v2ray restart"'
 	else
-	exit 0
+		exit 0
 	fi
 
 else
