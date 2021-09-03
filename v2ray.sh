@@ -11,8 +11,11 @@ function check_config(){
 	cat /usr/local/etc/v2ray/config.json
 
 	rows=$(awk 'END {print NR}' /usr/local/etc/v2ray/config.json )
-	echo $rows
+	
 	if [ $rows == 32 ]; then
+		echo ""
+		echo "vmess+tcp"
+		echo ""
 		ip=$(curl -s https://ipinfo.io/ip)
 		port=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==3 {print substr($2,0,length($2)-1)}')
 		userid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==8 {print substr($2,0,length($2)-1)}')
@@ -34,7 +37,9 @@ function check_config(){
 				} 
 EOF
 	elif [ $rows == 47 ]; then
-
+		echo ""
+		echo "vmess+ws+tls"
+		echo ""
 		port=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==4 {print substr($2,0,length($2)-1)}')
 		userid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==9 {print substr($2,0,length($2)-1)}')
 		alterid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==11 {print $2}')
@@ -43,18 +48,20 @@ EOF
 				{
 					"v": "2",
 					"ps": "",
-					"add": "$urdomain",
+					"add": $urdomain,
 					"port": "443",
-					"id": "$userid",
+					"id": $userid,
 					"aid": "$alterid",
 					"net": "ws",
 					"type": "none",
 					"host": "",
-					"path": "$urpath",
+					"path": $urpath,
 					"tls": "tls"
 				} 
 EOF
 	else
+		echo ""
+		echo "Please check your config."
 		exit 0
 	fi
 
@@ -107,7 +114,7 @@ if [ "$main_no" = "1" ]; then
 # 					"ps": "",
 # 					"add": "$ip",
 # 					"port": "$port",
-# 					"id": "$userid",
+# 					"id": $userid,
 # 					"aid": "$alterid",
 # 					"net": "tcp",
 # 					"type": "none",
