@@ -27,7 +27,7 @@ function check_config(){
 					"ps": "",
 					"add": "$ip",
 					"port": "$port",
-					"id": "$userid",
+					"id": $userid,
 					"aid": "$alterid",
 					"net": "tcp",
 					"type": "none",
