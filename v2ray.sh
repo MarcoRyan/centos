@@ -44,6 +44,8 @@ EOF
 		userid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==9 {print substr($2,0,length($2)-1)}')
 		alterid=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==11 {print $2}')
 		urpath=$(cat /usr/local/etc/v2ray/config.json | awk 'NR==18 {print $2}')
+		urdomain=$(cat /usr/local/etc/v2ray/domain.txt)
+		
 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
 				{
 					"v": "2",
@@ -132,6 +134,7 @@ if [ "$main_no" = "1" ]; then
 
 		read -p "请输入你的域名：" urdomain
 		[ "$urdomain" == "" ] && read -p "请输入你的域名：" urdomain
+		echo $urdomain > /usr/local/etc/v2ray/domain.txt
 
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "9s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
