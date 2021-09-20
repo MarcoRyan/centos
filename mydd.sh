@@ -155,15 +155,15 @@ function Start() {
   CVMIRROR=''
   DMIRROR=''
   UMIRROR=''
-  SYSMIRROR1='http://sj.pyabc.net/repo/dd/CentOS-79.img.gz'
-  SYSMIRROR2='http://sj.pyabc.net/repo/dd/CentOS-76.img.gz'
-  SYSMIRROR3='http://sj.pyabc.net/repo/dd/CentOS_84.vhd.gz'
+  SYSMIRROR1='https://files.pyabc.net/repo/dd/CentOS-79.img.gz'
+  SYSMIRROR2='https://files.pyabc.net/repo/dd/CentOS-76.img.gz'
+  SYSMIRROR3='https://files.pyabc.net/repo/dd/CentOS_84.vhd.gz'
   SYSMIRROR12='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2019_DataCenter_CN_v5.1.vhd.gz'
   SYSMIRROR13='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2016_DataCenter_CN_v4.12.vhd.gz'
   SYSMIRROR14='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2012R2_DataCenter_CN_v4.29.vhd.gz'
   SYSMIRROR15='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/WinSrv2012r2x64/lite/winsrv2012r2-data-x64-cn.vhd.gz'
   SYSMIRROR16='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2008R2_DataCenter_CN_v3.27.vhd.gz'
-  SYSMIRROR17='http://sj.pyabc.net/repo/dd/win10-ltsc-x64-cn.vhd.gz'
+  SYSMIRROR17='https://files.pyabc.net/repo/dd/win10-ltsc-x64-cn.vhd.gz'
   SYSMIRROR18='http://disk.29296819.xyz/92shidai.com/dd/os/cxthhhhh/new/Disk_Windows_Server_2003_DataCenter_CN_v7.1.vhd.gz'
   SYSMIRROR19='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/WinSrv2003/10G/WinSrv2003x86-Chinese-C10G.vhd.gz'
   SYSMIRROR20='http://disk.29296819.xyz/92shidai.com/dd/os/laosiji/Win10/Win10_x64.vhd.gz'
@@ -179,15 +179,15 @@ function Start() {
     CVMIRROR="--mirror http://mirrors.tuna.tsinghua.edu.cn/centos-vault/"
     DMIRROR="--mirror http://mirrors.aliyun.com/debian/"
     UMIRROR="--mirror http://mirrors.aliyun.com/ubuntu/"
-    SYSMIRROR1='http://sj.pyabc.net/repo/dd/CentOS-79.img.gz'
-    SYSMIRROR2='http://sj.pyabc.net/repo/dd/CentOS-76.img.gz'
-    SYSMIRROR3='http://sj.pyabc.net/repo/dd/CentOS_84.vhd.gz'
+    SYSMIRROR1='https://files.pyabc.net/repo/dd/CentOS-79.img.gz'
+    SYSMIRROR2='https://files.pyabc.net/repo/dd/CentOS-76.img.gz'
+    SYSMIRROR3='https://files.pyabc.net/repo/dd/CentOS_84.vhd.gz'
     SYSMIRROR12='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2019_DataCenter_CN_v5.1.vhd.gz'
     SYSMIRROR13='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2016_DataCenter_CN_v4.12.vhd.gz'
     SYSMIRROR14='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2012R2_DataCenter_CN_v4.29.vhd.gz'
     SYSMIRROR15='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/WinSrv2012r2x64/lite/winsrv2012r2-data-x64-cn.vhd.gz'
     SYSMIRROR16='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2008R2_DataCenter_CN_v3.27.vhd.gz'
-    SYSMIRROR17='http://sj.pyabc.net/repo/dd/win10-ltsc-x64-cn.vhd.gz'
+    SYSMIRROR17='https://files.pyabc.net/repo/dd/win10-ltsc-x64-cn.vhd.gz'
     SYSMIRROR18='http://disk.29296819.xyz/92shidai.cn/dd/os/cxthhhhh/new/Disk_Windows_Server_2003_DataCenter_CN_v7.1.vhd.gz'
     SYSMIRROR19='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/WinSrv2003/10G/WinSrv2003x86-Chinese-C10G.vhd.gz'
     SYSMIRROR20='http://disk.29296819.xyz/92shidai.cn/dd/os/laosiji/Win10/Win10_x64.vhd.gz'
@@ -219,7 +219,7 @@ function Start() {
   echo "  14) Windows Server 2012"
   echo "  15) Windows Server 2012 Lite"
   echo "  16) Windows Server 2008"
-  echo "  17) Windows 10 Lite (2019)"
+  echo "  17) Windows 10 Lite (2019 DD)"
   echo "  18) Windows Server 2003"
   echo "  19) Windows Server 2003 Lite"
   echo "  20) Windows 10 LTSC Lite"
