@@ -81,6 +81,7 @@ echo ""
 
 echo "  1.Install v2ray                               2.Uninstall v2ray"
 echo "  3.Check config                                4.Modify config"
+echo "  5.Install docker_v2ray"
 
 
 echo ""
@@ -213,6 +214,60 @@ elif [ "$main_no" = "4" ]; then
 		exit 0
 	fi
 
+elif [ "$main_no" = "5" ]; then
+	clear
+	echo ""
+	echo "  1.Install v2ray tcp"
+	echo "  2.Install v2ray ws+tls+web"
+	echo ""
+	read -p "Please input the number you choose:" v2ray_no
+
+	if [ "$v2ray_no" = "1" ]; then
+
+		mkdir -p /usr/local/etc/v2ray
+		wget https://raw.githubusercontent.com/hityne/centos/main/config.json  -O -> /usr/local/etc/v2ray/config.json
+
+		userid=$(cat /proc/sys/kernel/random/uuid)
+		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
+
+		read -p "请设置端口号（默认24380）：" port
+		[ "$port" != "" ] && sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
+
+		read -p "请输入alterid（默认64）:" alterid
+		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
+
+		docker run -d --name v2ray_tcp -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
+
+
+	elif [ "$v2ray_no" = "2" ]; then
+
+		mkdir -p /usr/local/etc/v2ray
+		wget https://github.com/hityne/centos/raw/ur/config2.json  -O -> /usr/local/etc/v2ray/config.json
+
+		read -p "请输入你的域名：" urdomain
+		[ "$urdomain" == "" ] && read -p "请输入你的域名：" urdomain
+		echo $urdomain > /usr/local/etc/v2ray/domain.txt
+
+		userid=$(cat /proc/sys/kernel/random/uuid)
+		sed -i "9s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
+
+		read -p "请设置端口号（默认35367）：" port
+		[ "$port" != "" ] && sed -i "4s/35367/$port/" /usr/local/etc/v2ray/config.json
+		[ "$port" = "" ] && port=35367
+
+		read -p "请输入alterid（默认64）:" alterid
+		[ "$alterid" != "" ] && sed -i "11s/64/$alterid/" /usr/local/etc/v2ray/config.json
+
+		read -p "请输入path（默认"down"）:" urpath
+		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
+
+		docker run -d --name v2ray_ws_tls -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
+
+
+	else
+	exit 0
+	fi
+	
 else
 exit 0
 
