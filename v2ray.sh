@@ -216,6 +216,14 @@ elif [ "$main_no" = "4" ]; then
 
 elif [ "$main_no" = "5" ]; then
 	clear
+	if systemctl is-active docker &>/dev/null ;then
+		echo "docker已经启动"
+	else
+		echo "docker未启动"
+		echo "请先启动docker服务"
+		echo ""
+		exit 0
+	fi
 	echo ""
 	echo "  1.Install v2ray tcp"
 	echo "  2.Install v2ray ws+tls+web"
