@@ -132,6 +132,8 @@ if [ "$main_no" = "1" ]; then
 		yum install -y curl
 		bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 		wget https://github.com/hityne/centos/raw/ur/config2.json  -O -> /usr/local/etc/v2ray/config.json
+		
+		sed -i "5s/127.0.0.1/0.0.0.0/" /usr/local/etc/v2ray/config.json
 
 		read -p "请输入你的域名：" urdomain
 		[ "$urdomain" == "" ] && read -p "请输入你的域名：" urdomain
