@@ -272,7 +272,7 @@ elif [ "$main_no" = "5" ]; then
 		read -p "请输入path（默认"down"）:" urpath
 		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
 
-		docker run -d --name v2ray_ws_tls --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
+		docker run -d --name v2ray_ws_tls --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p 127.0.0.1:$port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
 		
 		echo ""
 		echo "*******************"
