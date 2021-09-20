@@ -48,7 +48,7 @@ echo -e "  ${YELLOW}1.DD system${RES}                                   ${YELLOW
 echo ""
 echo -e "  ${YELLOW}3.Install bt Panel${RES}                            ${YELLOW}4.Install v2ray${RES}"
 echo ""
-echo -e "  ${YELLOW}5.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW}6.Install vim and bc${RES}"
+echo -e "  ${YELLOW}5.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW}6.Unixbech一键跑分${RES}"
 echo ""
 echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW}8.Upgrade sqlite3${RES}" 
 echo ""
@@ -85,8 +85,7 @@ elif [ "$main_no" = "5" ]; then
 	echo""
 	echo "Service sshd has been restarted. Please use the new SSH port to login."
 elif [ "$main_no" = "6" ]; then
-	yum -y install vim-enhanced
-	yum -y install bc
+	wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh && chmod +x unixbench.sh && ./unixbench.sh
 elif [ "$main_no" = "7" ]; then
 	yum -y install screen
 	echo ""
