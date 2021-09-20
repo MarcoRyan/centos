@@ -244,7 +244,7 @@ elif [ "$main_no" = "5" ]; then
 		read -p "请输入alterid（默认64）:" alterid
 		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
-		docker run -d --name v2ray_tcp -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
+		docker run -d --name v2ray_tcp --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
 
 
 	elif [ "$v2ray_no" = "2" ]; then
@@ -269,7 +269,7 @@ elif [ "$main_no" = "5" ]; then
 		read -p "请输入path（默认"down"）:" urpath
 		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
 
-		docker run -d --name v2ray_ws_tls -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
+		docker run -d --name v2ray_ws_tls --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
 
 
 	else
