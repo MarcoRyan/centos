@@ -240,6 +240,7 @@ elif [ "$main_no" = "5" ]; then
 
 		read -p "请设置端口号（默认24380）：" port
 		[ "$port" != "" ] && sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
+		[ "$port" = "" ] && port=35367
 
 		read -p "请输入alterid（默认64）:" alterid
 		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
@@ -270,6 +271,16 @@ elif [ "$main_no" = "5" ]; then
 		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
 
 		docker run -d --name v2ray_ws_tls --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
+		
+		echo ""
+		echo "*******************"
+		echo "请开通端口$port"
+		echo "请为$urdomain申请SSL认证"
+		wget https://raw.githubusercontent.com/hityne/centos/ur/site.config  -O -> /usr/local/etc/v2ray/site.config
+		echo "网站配置文件添加以下内容(/usr/local/etc/v2ray/site.config)："
+		cat /usr/local/etc/v2ray/site.config
+		echo "*******************"
+		echo ""
 
 
 	else
