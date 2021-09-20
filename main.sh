@@ -50,7 +50,7 @@ echo -e "  ${YELLOW}3.Install bt Panel${RES}                            ${YELLOW
 echo ""
 echo -e "  ${YELLOW}5.Modify SSH Port (for defaut port 22)${RES}        ${YELLOW}6.Unixbech一键跑分${RES}"
 echo ""
-echo -e "  ${YELLOW}7.Install screen${RES}                              ${YELLOW}8.Upgrade sqlite3${RES}" 
+echo -e "  ${YELLOW}7.Install docker${RES}                              ${YELLOW}8.Upgrade sqlite3${RES}" 
 echo ""
 echo -e "  ${YELLOW}9.Set localtime to China zone${RES}                 ${YELLOW}10.VPS info${RES}"
 echo ""
@@ -87,11 +87,10 @@ elif [ "$main_no" = "5" ]; then
 elif [ "$main_no" = "6" ]; then
 	wget --no-check-certificate https://github.com/teddysun/across/raw/master/unixbench.sh && chmod +x unixbench.sh && ./unixbench.sh
 elif [ "$main_no" = "7" ]; then
-	yum -y install screen
+	curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 	echo ""
-	echo "screen -S xxx    #creat a new screen named xxx"
-	echo "screen -r xxx    #recall the screen named xxx"
-	echo "exit             #shut off the current screen session"
+	echo "Please run 'service docker start' to start docker service."
+	echo "Or run 'systemctl enable docker' to make docker autostart when the system reboots."
 elif [ "$main_no" = "8" ]; then
 	wget https://github.com/hityne/centos/raw/main/upgrade-sqlite3.sh && chmod a+x upgrade-sqlite3.sh && bash upgrade-sqlite3.sh
 	
