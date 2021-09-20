@@ -170,7 +170,7 @@ if [ "$main_no" = "1" ]; then
 
 	echo ""
 	echo "*******************"
-	echo "请开通端口$port"
+	echo "请开通端口 $port"
 	echo "请为$urdomain申请SSL认证"
 	wget https://raw.githubusercontent.com/hityne/centos/ur/site.config  -O -> /usr/local/etc/v2ray/site.config
 	echo "网站配置文件添加以下内容(/usr/local/etc/v2ray/site.config)："
@@ -276,7 +276,7 @@ elif [ "$main_no" = "5" ]; then
 		
 		echo ""
 		echo "*******************"
-		echo "请开通端口$port"
+		echo "请开通端口 $port"
 		echo "请为$urdomain申请SSL认证"
 		wget https://raw.githubusercontent.com/hityne/centos/ur/site.config  -O -> /usr/local/etc/v2ray/site.config
 		echo "网站配置文件添加以下内容(/usr/local/etc/v2ray/site.config)："
