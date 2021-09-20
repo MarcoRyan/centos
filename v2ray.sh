@@ -103,10 +103,10 @@ if [ "$main_no" = "1" ]; then
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
 
-		read -p "请设置端口号（默认24380）：" port
+		read -p "请设置端口号（默认24380）: " port
 		[ "$port" != "" ] && sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
 
-		read -p "请输入alterid（默认64）:" alterid
+		read -p "请输入alterid（默认64）: " alterid
 		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
 # 		ip=$(curl -s https://ipinfo.io/ip)
@@ -135,17 +135,17 @@ if [ "$main_no" = "1" ]; then
 		
 		sed -i "5s/127.0.0.1/0.0.0.0/" /usr/local/etc/v2ray/config.json
 
-		read -p "请输入你的域名：" urdomain
+		read -p "请输入你的域名: " urdomain
 		[ "$urdomain" == "" ] && read -p "请输入你的域名：" urdomain
 		echo $urdomain > /usr/local/etc/v2ray/domain.txt
 
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "9s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
 
-		read -p "请设置端口号（默认35367）：" port
+		read -p "请设置端口号（默认35367）: " port
 		[ "$port" != "" ] && sed -i "4s/35367/$port/" /usr/local/etc/v2ray/config.json
 
-		read -p "请输入alterid（默认64）:" alterid
+		read -p "请输入alterid（默认64）: " alterid
 		[ "$alterid" != "" ] && sed -i "11s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
 		read -p "请输入path（默认"down"）:" urpath
@@ -240,11 +240,11 @@ elif [ "$main_no" = "5" ]; then
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
 
-		read -p "请设置端口号（默认24380）：" port
+		read -p "请设置端口号（默认24380）： " port
 		[ "$port" != "" ] && sed -i "3s/24380/$port/" /usr/local/etc/v2ray/config.json
 		[ "$port" = "" ] && port=35367
 
-		read -p "请输入alterid（默认64）:" alterid
+		read -p "请输入alterid（默认64）: " alterid
 		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
 		docker run -d --name v2ray_tcp --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p $port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
@@ -255,21 +255,21 @@ elif [ "$main_no" = "5" ]; then
 		mkdir -p /usr/local/etc/v2ray
 		wget https://github.com/hityne/centos/raw/ur/config2.json  -O -> /usr/local/etc/v2ray/config.json
 
-		read -p "请输入你的域名：" urdomain
-		[ "$urdomain" == "" ] && read -p "请输入你的域名：" urdomain
+		read -p "请输入你的域名: " urdomain
+		[ "$urdomain" == "" ] && read -p "请输入你的域名: " urdomain
 		echo $urdomain > /usr/local/etc/v2ray/domain.txt
 
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "9s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
 
-		read -p "请设置端口号（默认35367）：" port
+		read -p "请设置端口号（默认35367）: " port
 		[ "$port" != "" ] && sed -i "4s/35367/$port/" /usr/local/etc/v2ray/config.json
 		[ "$port" = "" ] && port=35367
 
-		read -p "请输入alterid（默认64）:" alterid
+		read -p "请输入alterid（默认64）: " alterid
 		[ "$alterid" != "" ] && sed -i "11s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
-		read -p "请输入path（默认"down"）:" urpath
+		read -p "请输入path（默认"down"）: " urpath
 		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
 
 		docker run -d --name v2ray_ws_tls --restart=always -v /usr/local/etc/v2ray:/etc/v2ray -p 127.0.0.1:$port:$port v2fly/v2fly-core  v2ray -config=/etc/v2ray/config.json
