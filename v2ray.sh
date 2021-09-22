@@ -98,7 +98,7 @@ if [ "$main_no" = "1" ]; then
 
 		yum install -y curl
 		bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-		wget https://raw.githubusercontent.com/hityne/centos/main/config.json  -O -> /usr/local/etc/v2ray/config.json
+		wget https://github.com/hityne/centos/raw/ur/config.json  -O -> /usr/local/etc/v2ray/config.json
 
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
@@ -200,7 +200,7 @@ elif [ "$main_no" = "5" ]; then
 	if [ "$v2ray_no" = "1" ]; then
 
 		mkdir -p /usr/local/etc/v2ray
-		wget https://github.com/hityne/centos/raw/main/config.json  -O -> /usr/local/etc/v2ray/config.json
+		wget https://github.com/hityne/centos/raw/ur/config.json  -O -> /usr/local/etc/v2ray/config.json
 
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
