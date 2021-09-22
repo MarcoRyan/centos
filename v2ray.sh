@@ -109,23 +109,6 @@ if [ "$main_no" = "1" ]; then
 		read -p "请输入alterid（默认64）: " alterid
 		[ "$alterid" != "" ] && sed -i "10s/64/$alterid/" /usr/local/etc/v2ray/config.json
 
-# 		ip=$(curl -s https://ipinfo.io/ip)
-
-# 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
-# 				{
-# 					"v": "2",
-# 					"ps": "",
-# 					"add": "$ip",
-# 					"port": "$port",
-# 					"id": $userid,
-# 					"aid": "$alterid",
-# 					"net": "tcp",
-# 					"type": "none",
-# 					"host": "",
-# 					"path": "",
-# 					"tls": ""
-# 				} 
-# EOF
 
 	elif [ "$v2ray_no" = "2" ]; then
 
@@ -148,23 +131,7 @@ if [ "$main_no" = "1" ]; then
 
 		read -p "请输入path（默认"down"）:" urpath
 		[ "$urpath" != "" ] && sed -i "18s/down/$urpath/" /usr/local/etc/v2ray/config.json
-		urpath="/"$urpath
 
-# 		cat >/usr/local/etc/v2ray/vmess_qr.json << EOF
-# 				{
-# 					"v": "2",
-# 					"ps": "",
-# 					"add": "$urdomain",
-# 					"port": "443",
-# 					"id": "$userid",
-# 					"aid": "$alterid",
-# 					"net": "ws",
-# 					"type": "none",
-# 					"host": "",
-# 					"path": "$urpath",
-# 					"tls": "tls"
-# 				} 
-# EOF
 
 	echo ""
 	echo "*******************"
@@ -199,7 +166,7 @@ elif [ "$main_no" = "4" ]; then
 		echo ""
 		echo "vmess+tcp"
 		echo "If you are not an advanced user, please do not modify itmes other than port and userid."
-		echo 'After you save the configure, restart v2ray service using "service v2ray restart"'
+		echo 'After you save the configure, please restart v2ray service.'
 		echo ""
 		vim /usr/local/etc/v2ray/config.json
 
@@ -207,7 +174,7 @@ elif [ "$main_no" = "4" ]; then
 		echo ""
 		echo "vmess+ws+tls"
 		echo "If you are not an advanced user, please do not modify itmes other than port and userid."
-		echo 'After you save the configure, restart v2ray service using "service v2ray restart"'
+		echo 'After you save the configure, please restart v2ray service.'
 		echo ""
 		vim /usr/local/etc/v2ray/config.json
 	else
@@ -233,7 +200,7 @@ elif [ "$main_no" = "5" ]; then
 	if [ "$v2ray_no" = "1" ]; then
 
 		mkdir -p /usr/local/etc/v2ray
-		wget https://raw.githubusercontent.com/hityne/centos/main/config.json  -O -> /usr/local/etc/v2ray/config.json
+		wget https://github.com/hityne/centos/raw/main/config.json  -O -> /usr/local/etc/v2ray/config.json
 
 		userid=$(cat /proc/sys/kernel/random/uuid)
 		sed -i "8s/7966c347-b5f5-46a0-b720-ef2d76e1836a/$userid/" /usr/local/etc/v2ray/config.json
@@ -278,7 +245,7 @@ elif [ "$main_no" = "5" ]; then
 		echo "*******************"
 		echo "请开通端口 $port"
 		echo "请为$urdomain申请SSL认证"
-		wget https://raw.githubusercontent.com/hityne/centos/ur/site.config  -O -> /usr/local/etc/v2ray/site.config
+		wget https://github.com/hityne/centos/raw/ur/site.config  -O -> /usr/local/etc/v2ray/site.config
 		echo "网站配置文件添加以下内容(/usr/local/etc/v2ray/site.config)："
 		cat /usr/local/etc/v2ray/site.config
 		echo "*******************"
